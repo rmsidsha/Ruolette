@@ -11,23 +11,33 @@ public class rouletteTest extends JFrame{
 		//setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel all = new JPanel();  //¿¸√º ∆–≥Œ ªÁ¿Ã¡Ó
-		all.setSize(550, 978); 		//∑Í∑ø ∆–≥Œ ªÁ¿Ã¡Ó
+		JPanel all = new JPanel();  //Ï†ÑÏ≤¥ Ìå®ÎÑê ÏÇ¨Ïù¥Ï¶à
+		all.setSize(550, 978); 		//Î£∞Î†õ Ìå®ÎÑê ÏÇ¨Ïù¥Ï¶à
+		all.setOpaque(true);
+		all.setBackground(Color.GREEN);
 		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
 		all.setPreferredSize(new Dimension(550, 978));
+		all.setBorder(BorderFactory.createEmptyBorder(10 , 10 , 10 , 10));
+
 		
-		JPanel roul = new JPanel(); //∑Í∑ø ∆–≥Œ
-		roul.setSize(500, 500);     //∑Í∑ø ∆–≥Œ ªÁ¿Ã¡Ó
+		JPanel roul = new JPanel(); //Î£∞Î†õ Ìå®ÎÑê
+		roul.setSize(500, 500);     //Î£∞Î†õ Ìå®ÎÑê ÏÇ¨Ïù¥Ï¶à
 		roul.setOpaque(true);
-		//roul.setBackground(Color.BLUE);
+		roul.setBackground(Color.BLUE);
+		JLabel roulR = new JLabel();
+		ImageIcon iconR = new ImageIcon("C:\\Users\\Administrator\\Desktop\\Î∞∞Í≤ΩÏóÜÎäî Î£∞Î†õ.png");
+		roulR.setIcon(iconR);
+		roul.setPreferredSize(new Dimension(500, 500));
+		roul.add(roulR);
 		all.add(roul);
 		
 		
 		JPanel bt = new JPanel();
-		bt.setSize(500, 400);
+		bt.setSize(500, 200);
 		bt.setOpaque(true);
-		//bt.setBackground(Color.PINK);
-		JButton bt1 = new JButton("Ω√¿€");
+		bt.setBackground(Color.PINK);
+		bt.setPreferredSize(new Dimension(550, 400));
+		JButton bt1 = new JButton("ÏãúÏûë");
 		bt.add(bt1);
 		all.add(bt);
 		
