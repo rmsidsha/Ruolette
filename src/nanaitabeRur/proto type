@@ -1,0 +1,100 @@
+package nanaitabeRur;
+
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.image.BufferedImage;
+import javax.imageio.*;
+import java.io.*;
+
+import nanaitabeRur.rotate.Rotate;
+
+public class rouletteTest extends JFrame{
+	
+	public rouletteTest() throws IOException {
+		setSize(550, 978);
+		//setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		
+		JPanel all = new JPanel();  //전체 패널 사이즈
+		all.setSize(550, 978); 		//룰렛 패널 사이즈
+		all.setOpaque(true);
+		all.setBackground(Color.GREEN);
+		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
+		all.setPreferredSize(new Dimension(550, 978));
+		all.setBorder(BorderFactory.createEmptyBorder(10 , 10 , 10 , 10));
+
+		
+		JPanel roul = new JPanel(); //룰렛 패널(패널1)
+		roul.setSize(500, 500);     //룰렛 패널 사이즈
+		roul.setOpaque(true);
+		roul.setBackground(Color.BLUE);
+		JLabel roulR = new JLabel();
+		//ImageIcon iconR = new ImageIcon("C:\\Users\\Administrator\\Desktop\\배경없는 룰렛.png");
+		//image rotate
+		File f = new File("C:\\Users\\Administrator\\Desktop\\배경없는 룰렛.png");
+		BufferedImage bi = ImageIO.read(f);
+		roulR.setIcon(new ImageIcon(bi));
+		Rotate rt = new Rotate();
+		rt.rotate(bi, 130);
+		
+		//roulR.setIcon(iconR);
+		roul.setPreferredSize(new Dimension(500, 500));
+		roul.add(roulR);
+		all.add(roul);
+		
+		
+		JPanel btPP = new JPanel();  //버튼들을 붙인 패널을 붙일 패널2
+		btPP.setSize(500, 200);
+		btPP.setLayout(new BoxLayout(btPP, BoxLayout.Y_AXIS));
+		btPP.setOpaque(true);
+		btPP.setBackground(Color.PINK);
+		btPP.setPreferredSize(new Dimension(550, 400));
+		
+		JPanel btP = new JPanel();  //시작 버튼을 붙일 패널
+		JButton bt1 = new JButton("시작");
+		bt1.setPreferredSize(new Dimension(150, 100));
+		btP.add(bt1);
+		btPP.add(btP);
+		
+		JPanel otherP = new JPanel();
+		//otherP.setLayout(new BorderLayout());	
+			JButton otherBt1 = new JButton("5개");
+			otherBt1.setPreferredSize(new Dimension( 100, 60));
+			//otherBt1.setBorder(BorderFactory.createEmptyBorder(50 , 50 , 20 , 20));
+			otherP.add(otherBt1); // BorderLayout.WEST
+		
+			JButton otherBt2 = new JButton("7개");
+			otherBt2.setPreferredSize(new Dimension(100, 60));
+			//otherBt2.setBorder(BorderFactory.createEmptyBorder(50 , 50 , 20 , 20));
+			otherP.add(otherBt2); //, BorderLayout.CENTER
+		
+			JButton otherBt3 = new JButton("10개");
+			otherBt3.setPreferredSize(new Dimension(100, 60));
+			//otherBt3.setBorder(BorderFactory.createEmptyBorder(50 , 50 , 20 , 20));
+			otherP.add(otherBt3); //, BorderLayout.EAST
+		btPP.add(otherP);
+		
+		
+		all.add(btPP);
+		
+		add(all);
+		pack();
+		setVisible(true);
+		
+	}
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		rouletteTest rt = new rouletteTest();
+	}
+
+}
