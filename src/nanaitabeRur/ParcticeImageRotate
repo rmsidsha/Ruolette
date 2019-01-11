@@ -1,0 +1,46 @@
+package nanaitabeRur.rotate;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;	
+
+public class PraticeRotate extends JFrame {
+	
+	JPanel panel;
+	public PraticeRotate() {
+		/*setSize(400, 400);
+		
+		panel = new JPanel();
+		ImageIcon newImage = new ImageIcon(iPath);
+		panel.setIcon(newImage);
+		*/
+		String iPath =  "C:\\Users\\Administrator\\Desktop\\배경없는 룰렛.png";
+		
+		try {
+			int thumbnailW = 300;   //썸네일 너비
+			int thumbnailH = 300;   //썸네일 높이
+			
+			File oImage = new File(iPath);  //원본 이미지 파일 경로
+			File thumbImage = new File(iPath);  //생성할 썸네일 이미지 파일 경로
+			
+			BufferedImage createImage = ImageIO.read(oImage);
+			BufferedImage createThImage = new BufferedImage(thumbnailW, thumbnailH, BufferedImage.TYPE_3BYTE_BGR );
+			Graphics2D graphic = createThImage.createGraphics();
+			graphic.drawImage(createImage, 0, 0, thumbnailW, thumbnailH, null);
+	        ImageIO.write(createThImage, "jpg", thumbImage);
+	        System.out.println("썸네일 생성완료");
+		}
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		
+	}catch(IOException e) {
+		e.printStackTrace();
+	}
+	public static void main(String[] args) throws IOException {
+		
+	}
+
+}
