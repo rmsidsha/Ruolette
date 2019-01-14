@@ -97,31 +97,23 @@ public class Roulette extends JPanel {
       
       //회전 버튼 이벤트 처리
       class ActionRotate implements ActionListener{
-
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			if(arg0.getSource() ==sBtn) {
-				//사진이 회전하게 만들어 주세요..
-				
-				try {
-					int time = (int)(Math.random()*1000);
-					
-					JPanel panel = new JPanel();
-					JLabel label = new JLabel();
-						 for(int i=0; i<=time; i+=10) {  //i는 돌아가는 속도
-							   BufferedImage oldImage = ImageIO.read(new FileInputStream(showRoulette));  
-							   BufferedImage newImage = new BufferedImage(oldImage.getHeight(), oldImage.getWidth(), oldImage.getType());
-							   Graphics2D graphics = (Graphics2D) newImage.getGraphics();
-							   graphics.rotate(Math.toRadians(i), newImage.getWidth() / 2, newImage.getHeight() / 2);
-							   graphics.translate((newImage.getWidth() - oldImage.getWidth()) / 2, (newImage.getHeight() - oldImage.getHeight()) / 2);
-							   graphics.drawImage(oldImage, 0, 0, oldImage.getWidth(), oldImage.getHeight(), null);			   
-							   ImageIcon icon = new ImageIcon(newImage);
-							   lRoul.setIcon(icon);;
-							   System.gc();
-				} 
-				}catch (IOException e) {
-					e.printStackTrace();
-				}
+				//int time = (int)(Math.random()*1000);
+				 for(int i=0; i<=180; i+=1) {  //i는 돌아가는 속도   
+					  // BufferedImage oldImage = ImageIO.read(new FileInputStream(showRoulette));
+					   BufferedImage newImage = new BufferedImage(bi.getHeight(), bi.getWidth(), bi.getType());
+					   Graphics2D graphics = (Graphics2D) newImage.getGraphics();
+					   graphics.rotate(Math.toRadians(i), newImage.getWidth() / 2, newImage.getHeight() / 2);
+					   graphics.translate((newImage.getWidth() - bi.getWidth()) / 2, (newImage.getHeight() - bi.getHeight()) / 2);
+					   graphics.drawImage(bi, 0, 0, bi.getWidth(), bi.getHeight(), null);			   
+					   ImageIcon icon = new ImageIcon(newImage);
+					   lRoul.setIcon(icon);;
+					   pBtn.add(pbtn1);
+					   setVisible(true);
+					   System.gc();
+}
 			}
 			
 		}
