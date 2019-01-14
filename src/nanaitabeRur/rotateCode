@@ -1,21 +1,44 @@
-public Rotate() throws FileNotFoundException, IOException {
-   setSize(500,500);
-   
-   JPanel panel = new JPanel();
-   JLabel label = new JLabel();
-   
-   String path = "C:\\Users\\JaeWon\\Desktop\\캡처.jpg";  //파일 경로
-   BufferedImage oldImage = ImageIO.read(new FileInputStream(path));  
-   BufferedImage newImage = new BufferedImage(oldImage.getHeight(), oldImage.getWidth(), oldImage.getType());
-   Graphics2D graphics = (Graphics2D) newImage.getGraphics();
-   graphics.rotate(Math.toRadians(90), newImage.getWidth() / 2, newImage.getHeight() / 2);
-   graphics.translate((newImage.getWidth() - oldImage.getWidth()) / 2, (newImage.getHeight() - oldImage.getHeight()) / 2);
-   graphics.drawImage(oldImage, 0, 0, oldImage.getWidth(), oldImage.getHeight(), null);
-   ImageIO.write(newImage, "JPEG", new FileOutputStream(path));
-   
-   ImageIcon i = new ImageIcon(newImage);
-   label.setIcon(i);
-   panel.add(label);
-   setVisible(true);
-   add(panel);
+package gui;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+public class RotateImage extends JFrame{
+	public RotateImage() throws IOException {
+		   setSize(500,500);
+		   
+		   JPanel panel = new JPanel();
+		   JLabel label = new JLabel();
+		   
+		   String path = "C:\\Users\\Administrator\\Desktop\\배경없는 룰렛.PNG";  //파일 경로
+		  
+		 
+		   for(int i=0; i<360; i+=1) {  //i는 돌아가는 속도
+			   BufferedImage oldImage = ImageIO.read(new FileInputStream(path));  
+			   BufferedImage newImage = new BufferedImage(oldImage.getHeight(), oldImage.getWidth(), oldImage.getType());
+			   Graphics2D graphics = (Graphics2D) newImage.getGraphics();
+			   graphics.rotate(Math.toRadians(i), newImage.getWidth() / 2, newImage.getHeight() / 2);
+			   graphics.translate((newImage.getWidth() - oldImage.getWidth()) / 2, (newImage.getHeight() - oldImage.getHeight()) / 2);
+			   graphics.drawImage(oldImage, 0, 0, oldImage.getWidth(), oldImage.getHeight(), null);			   
+			   ImageIcon icon = new ImageIcon(newImage);
+			   label.setIcon(icon);
+			   panel.add(label);
+			   setVisible(true);
+			   add(panel);
+			   System.gc();
+		   }
+		   
+
+		   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+	public static void main(String[] args) throws IOException {
+		RotateImage r = new RotateImage();
+	}
 }
+
