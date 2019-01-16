@@ -24,19 +24,19 @@ import javax.swing.JTextField;
 
 public class Roulette extends JPanel {
 // 5개 짜리 룰렛 경로
-   private final static String ROULETTE_FIVE = "D:\\룰렛 사진 (1)\\5번.png";
+   private final static String ROULETTE_FIVE = "D:\\룰렛 사진\\5번.png";
 // 6개짜리 룰렛 경로
-   private final static String ROULETTE_SIX = "D:\\룰렛 사진 (1)\\6번 룰렛.png";
+   private final static String ROULETTE_SIX = "D:\\룰렛 사진\\6번 룰렛.png";
 // 8개 짜리 룰렛 경로
-   private final static String ROULETTE_EIGHTH = "D:\\룰렛 사진 (1)\\8번 룰렛.png";
+   private final static String ROULETTE_EIGHTH = "D:\\룰렛 사진\\8번 룰렛.png";
 
    String showRoulette = ROULETTE_FIVE;   // 룰렛화면, 기본은 5개 짜리
 // 초기 설정
-   int settingNumber = 5;
+   public int settingNumber = 5;
 
    File f;
    BufferedImage bi;
-   //public static boolean rouletteStop = true;   //룰렛판 변경 시 룰렛을 멈춤
+   public boolean rouletteStop = true;   //룰렛판 변경 시 룰렛을 멈춤
 
    public Roulette() {
       setLayout(null);
@@ -101,11 +101,10 @@ public class Roulette extends JPanel {
             
             
             
-			boolean ruletteStop = true;
-			while(ruletteStop ) {
-            
                for (int i = 0; i <= time; i+=10) { // i는 돌아가는 속도
-                  try {
+              
+            	 //while(rouletteStop==true ) {
+            	   try {
                   BufferedImage oldImage = ImageIO.read(new FileInputStream(showRoulette));
                   BufferedImage newImage = new BufferedImage(oldImage.getHeight(), oldImage.getWidth(),
                         oldImage.getType());
@@ -125,81 +124,85 @@ public class Roulette extends JPanel {
                   //System.gc();
                }
                
-             //회전판 5
+        // }
+               //회전판 5
                if(rotation>=0 && rotation <= 72){  // 1번의 경우
             	   tArea.append("1번이 당첨되었습니다!\n");
             	   tArea.setCaretPosition(tArea.getDocument().getLength());
-            	   tField.setText("");
+
                }
-               else if(rotation>=73 && rotation<=144) { //2번의 경우
+               else if(rotation>=73 && rotation<=144) { //5번의 경우
             	   tArea.append("5번이 당첨되었습니다!\n");
-            	   tArea.setForeground(Color.RED);
             	   tArea.setCaretPosition(tArea.getDocument().getLength());
-            	   tField.setText("");
                }
-               else if(rotation>=145 && rotation<=216) {  //3번의 경우
+               else if(rotation>=145 && rotation<=216) {  //4번의 경우
             	   tArea.append("4번이 당첨되었습니다!\n");
-            	   tArea.setForeground(Color.RED);
-            	   tArea.setCaretPosition(tArea.getDocument().getLength());
-            	   tField.setText("");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
                else if(rotation>=217 && rotation<=288) {  //4번의 경우
             	   tArea.append("3번이 당첨되었습니다!\n");
-            	   tArea.setForeground(Color.RED);
             	   tArea.setCaretPosition(tArea.getDocument().getLength());
-            	   tField.setText("");
                }
                else if(rotation>=289 && rotation <=360) {  //5번의 경우
             	   tArea.append("2번이 당첨되었습니다!\n");
-            	   tArea.setForeground(Color.RED);
             	   tArea.setCaretPosition(tArea.getDocument().getLength());
-            	   tField.setText("");
                }
-
+               
                //회전판 6
                if(rotation>=0 && rotation <= 60)  // 1번의 경우
-               {}
-               else if(rotation>=61 && rotation<=120) { //2번의 경우
-
+               {
+            	   tArea.append("1번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());
                }
-               else if(rotation>=121 && rotation<=180) {  //3번의 경우
-
+               else if(rotation>=61 && rotation<=120) { //6번의 경우
+            	   tArea.append("6번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());
+               }
+               else if(rotation>=121 && rotation<=180) {  //5번의 경우
+            	   tArea.append("5번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
                else if(rotation>=181 && rotation<=240) {  //4번의 경우
-
+            	   tArea.append("4번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
-               else if(rotation>=241 && rotation <=300) {  //5번의 경우
-
+               else if(rotation>=241 && rotation <=300) {  //3번의 경우
+            	   tArea.append("3번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
-               else if(rotation>=301 && rotation<=360) {  //6번의 경우
-
+               else if(rotation>=301 && rotation<=360) {  //2번의 경우
+            	   tArea.append("2번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
-
+               
                //회전판 8
                if(rotation>=0 && rotation <= 45)  // 1번의 경우
-               {}
-               else if(rotation>=46 && rotation<=90) { //2번의 경우
-
+               { tArea.append("1번이 당첨되었습니다!\n");
+        	   tArea.setCaretPosition(tArea.getDocument().getLength());}
+               else if(rotation>=46 && rotation<=90) { //8번의 경우
+            	   tArea.append("8번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());
                }
-               else if(rotation>=91 && rotation<=135) {  //3번의 경우
-
+               else if(rotation>=91 && rotation<=135) {  //7번의 경우
+            	   tArea.append("7번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
-               else if(rotation>=136 && rotation<=180) {  //4번의 경우
-
+               else if(rotation>=136 && rotation<=180) {  //6번의 경우
+            	   tArea.append("6번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
                else if(rotation>=181 && rotation <=225) {  //5번의 경우
-
+            	   
                }
-               else if(rotation>=226 && rotation<=270) {  //6번의 경우
-
+               else if(rotation>=226 && rotation<=270) {  //4번의 경우
+            	   
                }
-               else if(rotation>=271 && rotation<=315) {  //7번의 경우
-
+               else if(rotation>=271 && rotation<=315) {  //3번의 경우
+            	   
                }
-               else if(rotation>=316 && rotation<=360) {  //8번의 경우
-
+               else if(rotation>=316 && rotation<=360) {  //2번의 경우
+            	   
                }
-         }
               /* int radi = 360/settingNumber;
                for(int i = 0 ; i < settingNumber ; i++) {
                   if((rotation >= radi * i) && (rotation < (i + 1))) {
@@ -209,7 +212,8 @@ public class Roulette extends JPanel {
                }*/
          }
       }
-
+      
+     
       // 회전 버튼 이벤트 처리
       class ActionRotate implements ActionListener {
 
@@ -219,6 +223,8 @@ public class Roulette extends JPanel {
                // 사진이 회전하게 만들어 주세요..
                Thread t = new myThread();
                t.start();
+               setRouletteStop();
+               
             }
 
          }
@@ -259,6 +265,7 @@ public class Roulette extends JPanel {
             if (arg0.getSource() == btn1) {      // 5 룰렛
                showRoulette = ROULETTE_FIVE;
                settingNumber = 5;
+               setRouletteStop();
                
                try {
                   f = new File(ROULETTE_FIVE);
@@ -271,6 +278,7 @@ public class Roulette extends JPanel {
             } else if (arg0.getSource() == btn2) {   // 6 룰렛
                showRoulette = ROULETTE_SIX;
                settingNumber = 6;
+               setRouletteStop();
                try {
 
                   f = new File(ROULETTE_SIX);
@@ -283,6 +291,7 @@ public class Roulette extends JPanel {
             } else if (arg0.getSource() == btn3) {   // 8 룰렛
                showRoulette = ROULETTE_EIGHTH;
                settingNumber = 8;
+               setRouletteStop();
                try {
                   f = new File(ROULETTE_EIGHTH);
                   bi = ImageIO.read(f);
@@ -340,5 +349,8 @@ public class Roulette extends JPanel {
       add(pMain);
       setVisible(true);
 
+   }
+   public boolean setRouletteStop() {
+ 	  return !rouletteStop;
    }
 }
