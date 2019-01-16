@@ -92,12 +92,12 @@ public class Roulette extends JPanel {
       class myThread extends Thread {
          public void run() {
             Random r = new Random();
-            int time = Math.abs(r.nextInt()) % 10000;
+            int time = Math.abs(r.nextInt()) % 1000;
             int count =0;
             JPanel panel = new JPanel();
             JLabel label = new JLabel();
             int rotation = time%360;
-            tArea.append(time+" "+rotation+"\n");
+            //tArea.append(time+" "+rotation+"\n");
             
             
             
@@ -126,10 +126,12 @@ public class Roulette extends JPanel {
                
         // }
                //회전판 5
+               switch (settingNumber) {
+               
+               case 5 :
                if(rotation>=0 && rotation <= 72){  // 1번의 경우
             	   tArea.append("1번이 당첨되었습니다!\n");
             	   tArea.setCaretPosition(tArea.getDocument().getLength());
-
                }
                else if(rotation>=73 && rotation<=144) { //5번의 경우
             	   tArea.append("5번이 당첨되었습니다!\n");
@@ -139,16 +141,18 @@ public class Roulette extends JPanel {
             	   tArea.append("4번이 당첨되었습니다!\n");
             	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
-               else if(rotation>=217 && rotation<=288) {  //4번의 경우
+               else if(rotation>=217 && rotation<=288) {  //3번의 경우
             	   tArea.append("3번이 당첨되었습니다!\n");
             	   tArea.setCaretPosition(tArea.getDocument().getLength());
                }
-               else if(rotation>=289 && rotation <=360) {  //5번의 경우
+               else if(rotation>=289 && rotation <=360) {  //2번의 경우
             	   tArea.append("2번이 당첨되었습니다!\n");
             	   tArea.setCaretPosition(tArea.getDocument().getLength());
                }
+               break;
                
                //회전판 6
+               case 6:
                if(rotation>=0 && rotation <= 60)  // 1번의 경우
                {
             	   tArea.append("1번이 당첨되었습니다!\n");
@@ -174,8 +178,10 @@ public class Roulette extends JPanel {
             	   tArea.append("2번이 당첨되었습니다!\n");
             	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
+               break;
                
                //회전판 8
+               case 8:
                if(rotation>=0 && rotation <= 45)  // 1번의 경우
                { tArea.append("1번이 당첨되었습니다!\n");
         	   tArea.setCaretPosition(tArea.getDocument().getLength());}
@@ -192,17 +198,22 @@ public class Roulette extends JPanel {
             	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
                else if(rotation>=181 && rotation <=225) {  //5번의 경우
-            	   
+            	   tArea.append("5번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
                else if(rotation>=226 && rotation<=270) {  //4번의 경우
-            	   
+            	   tArea.append("4번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
                else if(rotation>=271 && rotation<=315) {  //3번의 경우
-            	   
+            	   tArea.append("3번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
                else if(rotation>=316 && rotation<=360) {  //2번의 경우
-            	   
+            	   tArea.append("2번이 당첨되었습니다!\n");
+            	   tArea.setCaretPosition(tArea.getDocument().getLength());;
                }
+               break;
               /* int radi = 360/settingNumber;
                for(int i = 0 ; i < settingNumber ; i++) {
                   if((rotation >= radi * i) && (rotation < (i + 1))) {
@@ -210,6 +221,7 @@ public class Roulette extends JPanel {
                      tArea.setCaretPosition(tArea.getDocument().getLength());
                   }
                }*/
+         }
          }
       }
       
@@ -313,7 +325,6 @@ public class Roulette extends JPanel {
       JPanel pText = new JPanel();   // 텍스트 패널
       pText.setSize(500, 250);
       pText.setPreferredSize(new Dimension(550, 250));
-
       JTextField tField = new JTextField(40);      // 텍스트 필드. 입력 부분
       JButton tBtn = new JButton("입력");         // 입력 후 버튼 누를시 에리어에 추가
       JTextArea tArea = new JTextArea(11, 48);   // 내용을 출력 받을 부분
